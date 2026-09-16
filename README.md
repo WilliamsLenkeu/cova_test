@@ -54,7 +54,8 @@ Statuts : `TODO` · `IN_PROGRESS` · `DONE`
 - **Backend :** Spring Security stateless + JJWT ; ownership strict des tâches ; filtre/recherche côté API.
 - **Frontend :** pages Auth + Tasks ; client `fetch` ; session JSON dans `localStorage`.
 - **DB :** MySQL interne au compose, schéma auto (`ddl-auto=update`).
-- **Hors scope actuel :** Flutter, CI/CD GCP (bonus brief).
+- **CI :** GitHub Actions (tests backend, build front, build images Docker).
+- **Hors scope actuel :** Flutter, déploiement GCP.
 
 
 
