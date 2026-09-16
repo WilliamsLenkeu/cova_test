@@ -1,75 +1,46 @@
 # Task Manager
 
-Mini application de gestion de tâches (test recrutement) : API Spring Boot + front React.
+Gestion de tâches avec un compte. Tu crées / modifies / supprimes tes tâches, tu filtres par statut et tu cherches dans le titre.
 
-## Structure
+Stack : Spring Boot 4, MySQL, JWT, React (Vite + Tailwind).
 
-```
-backend/     # Spring Boot 4 · JPA · MySQL · JWT
-frontend/    # React · Vite · TypeScript · Tailwind
-docker-compose.yml
-```
+## Lancer
 
-## Prérequis
-
-- Docker
-
-## Démarrage
+Il faut Docker.
 
 ```bash
 docker compose up --build
 ```
 
-- UI : `http://localhost`
-- API : `http://localhost/api` (nginx → backend) ou `http://localhost:8080`
+Ensuite : [http://localhost](http://localhost). L’API passe par nginx (`/api`) ; le backend écoute aussi sur le port 8080.
 
-Arrêt : `docker compose down`
+Pour tout stopper : `docker compose down`.
 
-## Fonctionnalités
-
-- Inscription / connexion (JWT en `localStorage`)
-- CRUD tâches (owner = utilisateur connecté)
-- Filtre par statut + recherche texte
-- Gestion d’erreurs API affichée dans l’UI
-
-
+```
+backend/     API Java
+frontend/    UI React
+docker-compose.yml
+```
 
 ## API
 
+```
+POST   /api/auth/register     { name, email, password }
+POST   /api/auth/login        { email, password }
+GET    /api/tasks             ?status=&q=
+POST   /api/tasks
+PUT    /api/tasks/{id}
+DELETE /api/tasks/{id}
+```
 
-| Méthode | Route                   | Auth                                     |
-| ------- | ----------------------- | ---------------------------------------- |
-| POST    | `/api/auth/register`    | non — body : `{ name, email, password }` |
-| POST    | `/api/auth/login`       | non — body : `{ email, password }`       |
-| GET     | `/api/tasks?status=&q=` | JWT                                      |
-| POST    | `/api/tasks`            | JWT                                      |
-| PUT     | `/api/tasks/{id}`       | JWT                                      |
-| DELETE  | `/api/tasks/{id}`       | JWT                                      |
+Statuts : `TODO`, `IN_PROGRESS`, `DONE`. Une tâche appartient à l’utilisateur du JWT (stocké en `localStorage`). Filtre et recherche côté serveur.
 
+CI sur GitHub Actions : tests Maven, build Vite, build des deux images.
 
-Statuts : `TODO` · `IN_PROGRESS` · `DONE`
-
-## Architecture (choix techniques)
-
-- **Backend :** Spring Security stateless + JJWT ; ownership strict des tâches ; filtre/recherche côté API.
-- **Frontend :** pages Auth + Tasks ; client `fetch` ; session JSON dans `localStorage`.
-- **DB :** MySQL interne au compose, schéma auto (`ddl-auto=update`).
-- **CI :** GitHub Actions (tests backend, build front, build images Docker).
-- **Hors scope actuel :** Flutter, déploiement GCP.
-
-
-
-## Captures d’écran
-
-Connexion :
+## Captures
 
 ![Connexion](screenshots/login.png)
 
-Inscription :
-
 ![Inscription](screenshots/register.png)
 
-Liste et CRUD des tâches :
-
-![Tâches](screenshots/tasks.png)
-
+![Liste des tâches](screenshots/tasks.png)
