@@ -1,0 +1,23 @@
+# Root
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*
+
+# IDE / agent local
+.cursor/
+CLAUDE.md
+AGENTS.md
+project_context.md
+docs/
+*.canvas.tsx
+
+# Java / Maven
+backend/target/
+backend/.idea/
+backend/*.iml
+
+# Node
+frontend/node_modules/
+frontend/dist/
