@@ -4,6 +4,7 @@ Thumbs.db
 *.log
 .env
 .env.*
+TEST DE RECRUTEMENT.md
 
 # IDE / agent local
 .cursor/
