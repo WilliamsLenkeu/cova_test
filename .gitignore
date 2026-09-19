@@ -22,3 +22,25 @@ backend/*.iml
 # Node
 frontend/node_modules/
 frontend/dist/
+
+# Flutter / Android
+mobile/.dart_tool/
+mobile/.flutter-plugins
+mobile/.flutter-plugins-dependencies
+mobile/.packages
+mobile/.pub-cache/
+mobile/.pub/
+mobile/build/
+mobile/.idea/
+mobile/**/*.iml
+mobile/android/.gradle/
+mobile/android/local.properties
+mobile/android/captures/
+mobile/android/.cxx/
+mobile/android/app/debug/
+mobile/android/app/profile/
+mobile/android/app/release/
+mobile/android/key.properties
+mobile/android/**/*.keystore
+mobile/android/**/*.jks
+mobile/coverage/
